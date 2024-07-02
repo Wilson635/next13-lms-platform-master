@@ -8,8 +8,8 @@ import { ConfettiProvider } from '@/components/providers/confetti-provider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'SSII - Course',
-  description: 'lms platform developed by SSII-Services',
+  title: 'Dada',
+  description: 'lms platform developed by DADA',
 }
 
 export default function RootLayout({

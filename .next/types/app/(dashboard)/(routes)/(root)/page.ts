@@ -1,4 +1,4 @@
-// File: G:\projet\next13-lms-platform-master\app\(dashboard)\(routes)\(root)\page.tsx
+// File: G:\projet\dada-project\app\(dashboard)\(routes)\(root)\page.tsx
 import * as entry from '../../../../../../app/(dashboard)/(routes)/(root)/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

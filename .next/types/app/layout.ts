@@ -1,4 +1,4 @@
-// File: G:\projet\next13-lms-platform-master\app\layout.tsx
+// File: G:\projet\dada-project\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
