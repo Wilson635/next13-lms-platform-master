@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+require('dotenv').config(); // Charger les variables d'environnement
 
 const database = new PrismaClient();
 
@@ -6,13 +7,12 @@ async function main() {
   try {
     await database.category.createMany({
       data: [
-        { name: "Computer Science" },
-        { name: "Music" },
-        { name: "Fitness" },
-        { name: "Photography" },
-        { name: "Accounting" },
-        { name: "Engineering" },
-        { name: "Filming" },
+        { name: "Fulfulde" },
+        { name: "Chadian Arabic" },
+        { name: "Bantu Languages" },
+        { name: "Afro-Asiatic Languages" },
+        { name: "Niger-Congo Languages" },
+        { name: "Nilo-Saharan Languages" },
       ]
     });
 

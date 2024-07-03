@@ -89,7 +89,7 @@ const CourseIdPage = async ({
             </span>
           </div>
           <Actions
-            disabled={!isComplete}
+            // disabled={!isComplete}
             courseId={params.courseId}
             isPublished={course.isPublished}
           />
