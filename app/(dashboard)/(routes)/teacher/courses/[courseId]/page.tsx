@@ -71,6 +71,9 @@ const CourseIdPage = async ({
 
   const isComplete = requiredFields.every(Boolean);
 
+  // Déterminer si le cours est gratuit
+  const isFreeCourse = course.price === 0;
+
   return (
     <>
       {!course.isPublished && (
@@ -89,7 +92,7 @@ const CourseIdPage = async ({
             </span>
           </div>
           <Actions
-            // disabled={!isComplete}
+            disabled={!isComplete}
             courseId={params.courseId}
             isPublished={course.isPublished}
           />

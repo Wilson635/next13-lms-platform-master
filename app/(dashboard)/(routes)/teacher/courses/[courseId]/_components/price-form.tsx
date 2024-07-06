@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,7 +27,8 @@ interface PriceFormProps {
 };
 
 const formSchema = z.object({
-  price: z.coerce.number(),
+  price: z.coerce.number().optional(), // Prix facultatif
+  isFree: z.boolean().optional(), // Option pour indiquer si le cours est gratuit
 });
 
 export const PriceForm = ({
@@ -45,6 +45,7 @@ export const PriceForm = ({
     resolver: zodResolver(formSchema),
     defaultValues: {
       price: initialData?.price || undefined,
+      isFree: initialData?.price === 0, // Initialisé à vrai si le prix est zéro
     },
   });
 
@@ -52,7 +53,8 @@ export const PriceForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}`, values);
+      const dataToSend = values.isFree ? { price: 0 } : { price: values.price };
+      await axios.patch(`/api/courses/${courseId}`, dataToSend);
       toast.success("Course updated");
       toggleEdit();
       router.refresh();
@@ -61,6 +63,7 @@ export const PriceForm = ({
     }
   }
 
+  // @ts-ignore
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
@@ -106,6 +109,25 @@ export const PriceForm = ({
                       placeholder="Set a price for your course"
                       {...field}
                     />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="isFree"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <label className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        disabled={isSubmitting}
+                        {...field}
+                      />
+                      <span>Free Course</span>
+                    </label>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
